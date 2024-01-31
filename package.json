@@ -14,7 +14,7 @@
     "ffmpeg",
     "fluent-ffmpeg"
   ],
-  "author": "Majid Khorshidian <mkhorshidian72s@gmail.com>",
+  "author": "Majid Khorshidian <mkhorshidian72@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "cross-env": "^7.0.3",
