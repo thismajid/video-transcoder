@@ -2,10 +2,19 @@ import { Request } from "express";
 import multer, { FileFilterCallback, Multer } from "multer";
 import path from "path";
 import { existsSync, mkdirSync } from "fs";
+
 import { HttpError } from "../utils";
+import { IUploadFile } from "../interfaces";
+
+const generateUploadedPath = (filename: string) => {
+  return `${filename}-${Date.now()}`;
+};
 
 const getUploadDirectoryPath = (filename: string) => {
-  return path.join(__dirname, `../uploads/raw/${filename}-${Date.now()}`);
+  return path.join(
+    __dirname,
+    `../uploads/raw/${generateUploadedPath(filename)}`
+  );
 };
 
 const ensureUploadDirectoryExists = (filename: string) => {
@@ -37,15 +46,13 @@ const storage = multer.diskStorage({
 const fileUploader: Multer = multer({
   storage: storage,
   limits: {},
-  fileFilter: (
-    req: Request,
-    file: Express.Multer.File,
-    cb: FileFilterCallback
-  ) => {
+  fileFilter: (req: Request, file: IUploadFile, cb: FileFilterCallback) => {
     const allowedFileTypes = [".mp4"];
     const fileExtension = path.extname(file.originalname).toLowerCase();
 
     if (allowedFileTypes.includes(fileExtension)) {
+      const filename = path.parse(file.originalname).name;
+      file.uploadedPath = generateUploadedPath(filename);
       cb(null, true);
     } else {
       cb(new HttpError("Only .mp4 files are allowed.", 400));

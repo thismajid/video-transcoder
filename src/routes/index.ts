@@ -1,1 +1,1 @@
-export { transcodeRouter } from "./transcode.route";
+export { transcoderRouter } from "./transcoder.route";

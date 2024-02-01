@@ -7,5 +7,7 @@ export async function errorHandler(
   res: Response,
   next: NextFunction
 ) {
+  console.log(error);
+
   return res.status(error.statusCode).json(error.message);
 }
