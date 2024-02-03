@@ -4,6 +4,12 @@ Video Transcoder is an Express.js application designed to provide an easy-to-use
 
 ## Features
 
+- Transcode video files to different formats or resolutions.
+- Asynchronous processing using Redis and BullMQ.
+- API endpoint for submitting video transcoding jobs.
+
+## Tech Stack
+
 - **API Endpoint for Transcoding**: Submit video transcoding jobs via a simple REST API.
 - **FFmpeg Integration**: Utilizes FFmpeg for efficient and high-quality video transcoding.
 - **Job Queue**: Implements BullMQ for managing and processing transcoding jobs asynchronously.
