@@ -28,5 +28,5 @@ Clone the repository to your local machine using the following command:
 git clone https://github.com/thismajid/video-transcoder.git
 cd video-transcoder
 npm install
-npm run start:dev
+npm run dev
 ```
