@@ -14,7 +14,7 @@ export const transcoderQueue = new Queue("video-transcoding-queue", {
 export const transcoderWorker = new Worker(
   "video-transcoding-queue",
   async (job) => {
-    return await transcoderVideo(job.data.filePath);
+    return await transcoderVideo({ ...job.data });
   },
   {
     connection,
